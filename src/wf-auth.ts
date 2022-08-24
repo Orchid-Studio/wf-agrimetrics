@@ -1,4 +1,4 @@
-import createAuth0Client from 'auth0-js';
+import createAuth0Client from '@auth0/auth0-spa-js';
 
 const config = {
   domain: 'sgnota.us.auth0.com',
@@ -11,7 +11,7 @@ const attachListeners = () => {
     loginButton.addEventListener('click', login);
   }
 
-  const logoutButton = document.querySelector('[auth0-logout]');
+  const logoutButton = document.querySelector('auth0-logout');
   if (logoutButton) {
     logoutButton.addEventListener('click', () => logout());
   }
