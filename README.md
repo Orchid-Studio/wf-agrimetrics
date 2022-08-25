@@ -101,6 +101,9 @@ const entryPoints = [
   'src/hooyah.ts',
   'src/home/other.ts',
 ];
+
+
+https://auth0.agrimetrics.co.uk/login?state=hKFo2SBaRDJBMVFOSmdKdDhObG1TZ0RqcW92QVM4VUhOU0ZadaFupWxvZ2luo3RpZNkgcmpndVIxMWRfcDh1Vkg4VGIxZ0FHTVdIQ3BUZ205dFSjY2lk2SBNcXR3VEtCNngwaHNvQkRLVWtGU01yNEswMlZLcjNwdA&client=MqtwTKB6x0hsoBDKUkFSMr4K02VKr3pt&protocol=oauth2&response_type=token%20id_token&scope=openid%20openid%20profile%20email%20app_metadata&audience=https%3A%2F%2Fagrimetrics.eu.auth0.com%2Fuserinfo&redirect_uri=https%3A%2F%2Fapp.agrimetrics.co.uk%2Fcatalog&mode=signUp&nonce=xKo8RkLoDYYRSsjAP6u30-iK3jBBggNy&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4xNC4wIn0%3D
 ```
 
 This will tell `esbuild` to build all those files and output them in the `dist` folder for production and in `http://localhost:3000` for development.

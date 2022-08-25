@@ -7,17 +7,19 @@ const config = {
 
 const attachListeners = () => {
   const loginButton = document.getElementById('auth0-login');
+
   if (loginButton) {
     loginButton.addEventListener('click', login);
   }
 
-  const logoutButton = document.querySelector('auth0-logout');
+  const logoutButton = document.querySelector('[auth0-logout]');
   if (logoutButton) {
     logoutButton.addEventListener('click', () => logout());
   }
 };
 
 let auth0 = null;
+
 const configureClient = async () => {
   attachListeners();
   try {
@@ -60,12 +62,17 @@ const isLoggedOut = () => {
   return loggedout;
 };
 
-const logout = (logoutPath = '/') => {
-  if (!isLoggedOut()) {
-    auth0.logout({
-      returnTo: window.location.origin + logoutPath,
-    });
-  }
+// const logout = (logoutPath = window.location.origin) => {
+//   if (!isLoggedOut()) {
+//     // auth0.logout({
+//     //   returnTo: window.location.origin + logoutPath,
+//     // });
+//   }
+// };
+const logout = () => {
+  auth0.logout({
+    returnTo: window.location.origin,
+  });
 };
 
 const populateAuth0Element = (data, key, domAttribute = 'innerText') => {
@@ -78,14 +85,20 @@ const populateAuth0Element = (data, key, domAttribute = 'innerText') => {
   });
 };
 
-const updateUI = async () => {
+const normalNav = document.getElementById('nav-button-group');
+const authNav = document.getElementById('nav-auth-group');
+
+export const updateUI = async () => {
   console.log('updateUI');
   const isAuthenticated = await auth0.isAuthenticated();
   if (!isAuthenticated) {
-    logout();
+    normalNav.classList.remove('hide');
+    authNav.classList.add('hide');
+    // logout();
   } else {
     // use full if you need to make requests using an auth0 token
-
+    normalNav.classList.add('hide');
+    authNav.classList.remove('hide');
     const token = await auth0.getTokenSilently();
 
     const user = await auth0.getUser();
@@ -101,7 +114,7 @@ const updateUI = async () => {
   }
 };
 
-const handleAuth0 = async () => {
+export const handleAuth0 = async () => {
   console.log('handleAuth0');
 
   await configureClient();
@@ -120,4 +133,4 @@ const handleAuth0 = async () => {
   updateUI();
 };
 
-handleAuth0();
+// handleAuth0();
