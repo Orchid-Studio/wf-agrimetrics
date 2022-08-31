@@ -3,8 +3,8 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 window.Webflow ||= [];
 
 const config = {
-  domain: 'sgnota.us.auth0.com',
-  clientId: 'dMuqia5K4PlR7FkRzEH2lkkSo0PB4szK',
+  domain: 'agrimetrics.eu.auth0.com',
+  clientId: 'K4sKaUAnUfZqsxXdNU51SO6TvgUiZwyq',
 };
 
 const attachListeners = () => {
