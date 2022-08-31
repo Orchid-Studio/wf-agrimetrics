@@ -29,7 +29,7 @@ const configureClient = async () => {
     });
     window.checkitout = auth0;
   } catch (e) {
-    console.error('FUCK', e);
+    console.error('Error :', e);
   }
 };
 
