@@ -3,8 +3,8 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 window.Webflow ||= [];
 
 const config = {
-  domain: 'agrimetrics.eu.auth0.com',
-  clientId: 'K4sKaUAnUfZqsxXdNU51SO6TvgUiZwyq',
+  domain: '',
+  clientId: '',
 };
 
 const attachListeners = () => {
@@ -90,7 +90,7 @@ const populateAuth0Element = (data, key, domAttribute = 'innerText') => {
 const normalNav = document.getElementById('nav-button-group');
 const authNav = document.getElementById('nav-auth-group');
 
-export const updateUI = async () => {
+const updateUI = async () => {
   console.log('updateUI');
   const isAuthenticated = await auth0.isAuthenticated();
   if (!isAuthenticated) {
@@ -105,12 +105,12 @@ export const updateUI = async () => {
 
     const user = await auth0.getUser();
 
-    populateAuth0Element(user, 'picture', 'src');
+    // populateAuth0Element(user, 'picture', 'src');
     populateAuth0Element(user, 'name');
     populateAuth0Element(user, 'email');
-    populateAuth0Element(user, 'family_name');
-    populateAuth0Element(user, 'given_name');
-    populateAuth0Element(user, 'nickname');
+    // populateAuth0Element(user, 'family_name');
+    // populateAuth0Element(user, 'given_name');
+    // populateAuth0Element(user, 'nickname');
 
     return;
   }
