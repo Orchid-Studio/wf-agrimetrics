@@ -2,6 +2,10 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 
 window.Webflow ||= [];
 
+window.onload = async () => {
+  handleAuth0();
+};
+
 const config = {
   domain: '',
   clientId: '',
@@ -93,6 +97,7 @@ const authNav = document.getElementById('nav-auth-group');
 
 const updateUI = async () => {
   console.log('updateUI');
+
   const isAuthenticated = await auth0.isAuthenticated();
   if (!isAuthenticated) {
     normalNav.classList.remove('hide');
@@ -102,6 +107,7 @@ const updateUI = async () => {
     // use full if you need to make requests using an auth0 token
     normalNav.classList.add('hide');
     authNav.classList.remove('hide');
+
     const token = await auth0.getTokenSilently();
 
     const user = await auth0.getUser();
@@ -118,7 +124,7 @@ const updateUI = async () => {
   }
 };
 
-export const handleAuth0 = async () => {
+const handleAuth0 = async () => {
   console.log('handleAuth0');
 
   await configureClient();
@@ -136,5 +142,3 @@ export const handleAuth0 = async () => {
 
   updateUI();
 };
-
-handleAuth0();
