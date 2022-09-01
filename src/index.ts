@@ -28,6 +28,7 @@ const configureClient = async () => {
     auth0 = await createAuth0Client({
       domain: config.domain,
       client_id: config.clientId,
+      useRefreshTokens: true,
     });
     window.checkitout = auth0;
   } catch (e) {
@@ -37,7 +38,7 @@ const configureClient = async () => {
 
 const login = async () => {
   await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin, // + "/dashboard/main"
+    redirect_uri: window.location.origin,
   });
 };
 
@@ -108,9 +109,10 @@ const updateUI = async () => {
     // populateAuth0Element(user, 'picture', 'src');
     populateAuth0Element(user, 'name');
     populateAuth0Element(user, 'email');
-    // populateAuth0Element(user, 'family_name');
+    populateAuth0Element(user, 'family_name');
     // populateAuth0Element(user, 'given_name');
-    // populateAuth0Element(user, 'nickname');
+    populateAuth0Element(user, 'nickname');
+    console.log(user);
 
     return;
   }
